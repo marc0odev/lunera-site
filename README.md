@@ -21,9 +21,17 @@ Animações: entrada no scroll (`Reveal.tsx`), header que fica translúcido ao r
 - `src/i18n/dictionary.ts`: todos os textos nos 5 idiomas. Novo idioma = novo bloco + entrada em `LANGUAGES`.
 - `src/components/`: `Landing.tsx` (seções), `ThemeToggle.tsx`, `LanguageSwitcher.tsx`, `Reveal.tsx`.
 - `public/`: logo oficial, `box-open.webp` (caixa sem fundo), foto da mulher com o patch, lua e `screens/` (capturas do app em claro e escuro).
-- `tools/`: `remove_bg.py` (tira o fundo da foto da caixa) e `capture_screens.py` (refaz as capturas do app quando o app mudar).
+- `tools/`: `remove_bg.py` (tira o fundo da foto da caixa) e `capture_all.py` (refaz as capturas do site, as telas do PowerPoint e a gravação do app quando o app mudar).
 
 ## Observações
 - Textos baseados na apresentação da Lunera. Os números da seção "Built around what women told us" vêm da pesquisa (42 mulheres de 40 anos ou mais que responderam sobre mudanças recentes): 48% querem um resumo para levar à consulta, 52% querem notificações só se configurarem, 60% compartilhariam só com um profissional de saúde escolhido.
 - Traduções feitas com apoio de IA: peça revisão de falantes nativos (principalmente DE e FR) antes da Suíça.
 - A fonte Inter é carregada do Google Fonts no navegador; sem internet cai para a fonte do sistema.
+
+
+## Imagens reais (11/11)
+
+- `public/screens/`: telas REAIS do Lunera App (claro e escuro, PT e EN), geradas por `tools/capture_all.py` com o app rodando na web. O componente `Phone` (em `src/components/Art.tsx`) escolhe a captura pelo tema e pelo idioma; ES, FR e DE usam a captura em inglês.
+- `public/photos/`: fotos conceituais dos três locais do patch (esterno superior, abaixo do peito, parte superior das costas). Sempre acompanhadas de "Imagem conceitual, localização ainda sujeita à validação".
+- A caixa com um patch continua ilustrativa (`PatchBox`), como a Ana pediu.
+- Contato: o botão abre a escrita no Gmail; "Salvar contato (.vcf)" baixa o mesmo cartão do QR code; "Abrir no meu app de e-mail" mantém o `mailto:`.
