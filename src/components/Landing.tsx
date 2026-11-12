@@ -100,18 +100,24 @@ export default function Landing() {
       <header
         className={`fixed inset-x-0 top-0 z-20 border-b transition-all duration-300 ${scrolled ? "border-line bg-background/80 backdrop-blur-xl" : "border-transparent bg-transparent"}`}
       >
-        <div className="mx-auto flex h-[76px] max-w-6xl items-center justify-between gap-3 px-4 sm:h-24 sm:px-6">
-          <a href="#top" aria-label="Lunera Healthcare" className="shrink-0">
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-2 px-4 sm:h-24 sm:gap-6 sm:px-6 xl:max-w-[1320px]">
+          <a
+            href="#top"
+            aria-label="Lunera Healthcare"
+            className="min-w-0 shrink sm:shrink-0"
+          >
             {/* Logo oficial em destaque, sem caixa. No modo escuro vira a versão clara (monocromática) */}
-            {logo("block h-14 w-auto sm:h-[72px] dark:hidden")}
             {logo(
-              "hidden h-14 w-auto brightness-0 invert opacity-90 sm:h-[72px] dark:block",
+              "block h-10 w-auto max-w-full min-[400px]:h-12 sm:h-[72px] dark:hidden",
+            )}
+            {logo(
+              "hidden h-10 w-auto max-w-full min-[400px]:h-12 brightness-0 invert opacity-90 sm:h-[72px] dark:block",
               true,
             )}
           </a>
           <nav
             aria-label="Menu"
-            className="flex min-w-0 items-center gap-2 text-[15px] font-medium text-muted sm:gap-4"
+            className="flex shrink-0 items-center gap-1.5 text-[15px] font-medium text-muted sm:gap-3 xl:gap-4 xl:text-[14px] 2xl:text-[15px]"
           >
             {nav.map(([id, k]) => (
               <a
@@ -122,9 +128,10 @@ export default function Landing() {
                 {t(k)}
               </a>
             ))}
+            {/* No celular o "Faça parte" fica dentro do menu; aparece no topo a partir de 640 px */}
             <a
               href="#contact"
-              className={`${primary} hidden whitespace-nowrap !px-5 !py-2.5 !text-sm xl:inline-flex`}
+              className={`${primary} whitespace-nowrap !px-5 !py-2.5 !text-sm max-sm:!hidden`}
             >
               {t("nav.join")}
             </a>
@@ -135,7 +142,7 @@ export default function Landing() {
               onClick={() => setMenu((v) => !v)}
               aria-expanded={menu}
               aria-label={t("nav.menu")}
-              className="grid h-10 w-10 place-items-center rounded-full border border-line bg-card text-foreground xl:hidden"
+              className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-line bg-card text-foreground xl:hidden"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -186,13 +193,13 @@ export default function Landing() {
 
       <main id="top" className="[&_section]:scroll-mt-24">
         {/* Introdução */}
-        <section className="relative overflow-hidden bg-[radial-gradient(70%_50%_at_50%_30%,var(--halo),transparent_72%)] pt-32 text-center sm:pt-40">
-          <div className="mx-auto max-w-4xl px-6">
+        <section className="relative overflow-hidden bg-[radial-gradient(70%_50%_at_50%_30%,var(--halo),transparent_72%)] pt-28 text-center sm:pt-40">
+          <div className="mx-auto max-w-4xl px-5 sm:px-6">
             <Reveal>
               <p className={kick}>{t("hero.sig")}</p>
             </Reveal>
             <Reveal delay={100}>
-              <h1 className="mt-5 text-[clamp(30px,4.8vw,56px)] font-semibold leading-[1.1] tracking-[-0.03em]">
+              <h1 className="mt-5 text-balance text-[clamp(26px,7.2vw,56px)] font-semibold leading-[1.12] tracking-[-0.025em] sm:text-[clamp(30px,4.8vw,56px)]">
                 {t("hero.title")}
               </h1>
             </Reveal>
@@ -373,7 +380,7 @@ export default function Landing() {
                 ["c3", "panel"],
               ].map(([k, vis], i) => (
                 <Reveal key={k} delay={i * 110}>
-                  <div className="flex h-full flex-col rounded-[36px] bg-card p-8 transition-transform duration-300 hover:-translate-y-1">
+                  <div className="flex h-full min-w-0 flex-col rounded-[36px] bg-card p-5 transition-transform sm:p-8">
                     <div className="h-[250px] overflow-hidden rounded-3xl bg-mist">
                       {vis === "patch" && (
                         <Photo
@@ -384,12 +391,12 @@ export default function Landing() {
                         />
                       )}
                       {vis === "app" && (
-                        <div className="flex h-full justify-center px-6 pt-6">
+                        <div className="flex h-full justify-center px-4 pt-6 sm:px-6">
                           <Phone
                             crop
                             name="diary"
                             alt={t("c2.k")}
-                            className="h-[300px] w-[200px]"
+                            className="h-[300px] w-full max-w-[200px]"
                           />
                         </div>
                       )}
@@ -399,7 +406,7 @@ export default function Landing() {
                             crop
                             name="evolution-patch"
                             alt={t("c3.k")}
-                            className="h-[300px] w-[200px]"
+                            className="h-[300px] w-full max-w-[200px]"
                           />
                         </div>
                       )}
@@ -450,9 +457,9 @@ export default function Landing() {
             </Reveal>
             <ol className="mt-12 grid gap-10 md:grid-cols-3">
               {["s1", "s2", "s3"].map((k, i) => (
-                <li key={k} className="relative pl-16">
+                <li key={k} className="relative min-w-0 pl-14 sm:pl-16">
                   <Reveal delay={i * 120}>
-                    <span className="absolute -left-16 top-0 grid h-11 w-11 place-items-center rounded-full bg-[linear-gradient(135deg,var(--color-violet),var(--color-aqua))] font-bold text-hero">
+                    <span className="absolute -left-14 top-0 grid h-10 w-10 place-items-center sm:h-11 sm:w-11 rounded-full bg-[linear-gradient(135deg,var(--color-violet),var(--color-aqua))] font-bold text-hero">
                       {i + 1}
                     </span>
                     <h3 className="text-xl font-semibold">{t(`${k}.t`)}</h3>
@@ -461,7 +468,7 @@ export default function Landing() {
                       <div
                         role="radiogroup"
                         aria-label={t("demo.label")}
-                        className="mt-4 flex max-w-[400px] gap-0.5 rounded-xl bg-mist p-[3px]"
+                        className="mt-4 flex max-w-[400px] flex-wrap gap-0.5 rounded-xl bg-mist p-[3px]"
                       >
                         {levels.map((l) => (
                           <button
@@ -470,7 +477,7 @@ export default function Landing() {
                             role="radio"
                             aria-checked={level === l}
                             onClick={() => setLevel(l)}
-                            className={`flex-1 rounded-[9px] px-1 py-2 text-[12px] font-semibold leading-tight transition-colors ${level === l ? tone[l] : "text-muted"}`}
+                            className={`flex-auto rounded-[9px] px-2 py-2 text-[12px] font-semibold leading-tight transition-colors ${level === l ? tone[l] : "text-muted"}`}
                           >
                             {t(`level.${l}`)}
                           </button>
@@ -629,11 +636,12 @@ export default function Landing() {
                   {t("ev.join.t")}
                 </h3>
                 <p className="mt-2 text-lg text-muted">{t("ev.join.s")}</p>
-                <div className="mt-8 grid gap-8 sm:grid-cols-2">
+                <div className="mt-8 grid gap-8 sm:grid-cols-3">
                   {(
                     [
                       ["br", SURVEY.br],
-                      ["intl", SURVEY.intl],
+                      ["en", SURVEY.en],
+                      ["es", SURVEY.es],
                     ] as const
                   ).map(([k, url]) => (
                     <figure key={k} className="flex flex-col items-center">

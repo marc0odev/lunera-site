@@ -26,7 +26,7 @@ export default function ThemeToggle() {
       type="button"
       onClick={toggle}
       aria-label={mode === "dark" ? t("theme.toLight") : t("theme.toDark")}
-      className="grid h-10 w-10 place-items-center rounded-full border border-line bg-card text-accent transition hover:opacity-80"
+      className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-line bg-card text-accent transition hover:opacity-80"
     >
       {mode === "dark" ? (
         <svg

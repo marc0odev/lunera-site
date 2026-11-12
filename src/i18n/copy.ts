@@ -998,14 +998,8 @@ const rows: Row[] = [
     "Nehmen Sie auch an unserer Umfrage teil.",
   ],
   ["ev.qr.br", "Brasil", "Brazil", "Brasil", "Brésil", "Brasilien"],
-  [
-    "ev.qr.intl",
-    "Outros países",
-    "Other countries",
-    "Otros países",
-    "Autres pays",
-    "Andere Länder",
-  ],
+  ["ev.qr.en", "English", "English", "English", "English", "English"],
+  ["ev.qr.es", "Español", "Español", "Español", "Español", "Español"],
   [
     "ev.qr.soon",
     "Link do formulário em breve",

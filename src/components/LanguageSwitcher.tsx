@@ -33,7 +33,7 @@ export default function LanguageSwitcher({
         aria-expanded={open}
         aria-label={`${t("lang.label")}: ${lang}`}
         onClick={() => setOpen((o) => !o)}
-        className="flex items-center gap-1.5 rounded-full border border-line bg-card px-3 py-2 text-sm font-bold text-foreground"
+        className="flex h-10 shrink-0 items-center gap-1 rounded-full border border-line bg-card px-2.5 text-sm font-bold text-foreground sm:gap-1.5 sm:px-3"
       >
         <svg
           width="16"
