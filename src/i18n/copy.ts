@@ -118,11 +118,11 @@ const rows: Row[] = [
   ],
   [
     "hero.box",
-    "Lunera Patch · Dispositivo vestível para a saúde da mulher",
-    "Lunera Patch · Wearable for women’s health",
-    "Lunera Patch · Dispositivo vestible para la salud de la mujer",
-    "Lunera Patch · Dispositif connecté pour la santé des femmes",
-    "Lunera Patch · Tragbares Gerät für die Gesundheit der Frau",
+    "Lunera Patch · Dispositivo vestível em desenvolvimento para a saúde da mulher",
+    "Lunera Patch · Wearable in development for women’s health",
+    "Lunera Patch · Dispositivo vestible en desarrollo para la salud de la mujer",
+    "Lunera Patch · Dispositif connecté en développement pour la santé des femmes",
+    "Lunera Patch · Tragbares Gerät in Entwicklung für die Gesundheit der Frau",
   ],
   [
     "concept",

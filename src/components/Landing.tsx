@@ -321,6 +321,83 @@ export default function Landing() {
           </div>
         </section>
 
+        {/* Quem somos: a origem do nome e o propósito (logo depois da introdução, como o 1º item do menu) */}
+        <section
+          id="about"
+          className="relative bg-[#14125A] py-28 text-center text-white"
+        >
+          <Image
+            src="/moon.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,12,58,.55),rgba(14,12,58,.88))]" />
+          <Reveal className="relative mx-auto max-w-6xl px-6">
+            <h2 className={`mx-auto max-w-[15em] ${h2}`}>{t("moon.title")}</h2>
+            <p className="mt-4 text-sm font-bold tracking-[0.2em] text-[#C3B5FF]">
+              {t("moon.etym")}
+            </p>
+            <p className="mx-auto mt-3 max-w-[34em] text-xl text-[#E6E2FF]">
+              {t("moon.text")}
+            </p>
+            <p className="mx-auto mt-2 max-w-[34em] text-lg text-[#D6D2F5]">
+              {t("moon.tag")}
+            </p>
+            <div className="mt-8">
+              <a href="#purpose" className={`${btn} bg-white text-indigo`}>
+                {t("moon.btn")}
+              </a>
+            </div>
+          </Reveal>
+        </section>
+
+        <section
+          id="purpose"
+          className="overflow-hidden bg-[linear-gradient(135deg,var(--color-mist),var(--background))] py-24"
+        >
+          <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-[1.2fr_.8fr]">
+            <Reveal className="min-w-0">
+              {logo("block h-14 w-auto dark:hidden")}
+              {logo(
+                "hidden h-14 w-auto brightness-0 invert opacity-90 dark:block",
+                true,
+              )}
+              <p className={`mt-8 ${kick}`}>{t("pur.kicker")}</p>
+              <h2 className={`mt-3 ${h2}`}>{t("pur.title")}</h2>
+              <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xl font-semibold text-accent">
+                <span>{t("pur.luna")}</span>
+                <span aria-hidden="true" className="h-7 w-px bg-line" />
+                <span>{t("pur.era")}</span>
+              </div>
+              <p className="mt-6 max-w-[36em] text-lg leading-relaxed text-muted">
+                {t("pur.p1")}
+              </p>
+              <p className="mt-4 max-w-[36em] text-lg leading-relaxed text-muted">
+                {t("pur.p2")}
+              </p>
+              <p className="mt-8 text-[clamp(22px,3vw,34px)] font-semibold leading-tight tracking-tight">
+                {t("moon.tag")}
+              </p>
+            </Reveal>
+            <Reveal delay={150}>
+              <div
+                className="flex items-center justify-center gap-3 md:flex-col md:gap-5"
+                aria-hidden="true"
+              >
+                {[0.1, 0.3, 0.5, 0.75, 1].map((p) => (
+                  <Moon
+                    key={p}
+                    phase={p}
+                    className="h-12 w-12 sm:h-16 sm:w-16 md:h-[76px] md:w-[76px]"
+                  />
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
         {/* O problema */}
         <section id="problem" className="py-24">
           <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-[.8fr_1.2fr]">
@@ -729,83 +806,6 @@ export default function Landing() {
             <p className="mt-8 text-center text-sm text-muted">
               {t("next.foot")} {t("next.cond")}
             </p>
-          </div>
-        </section>
-
-        {/* A origem do nome */}
-        <section
-          id="about"
-          className="relative bg-[#14125A] py-28 text-center text-white"
-        >
-          <Image
-            src="/moon.jpg"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,12,58,.55),rgba(14,12,58,.88))]" />
-          <Reveal className="relative mx-auto max-w-6xl px-6">
-            <h2 className={`mx-auto max-w-[15em] ${h2}`}>{t("moon.title")}</h2>
-            <p className="mt-4 text-sm font-bold tracking-[0.2em] text-[#C3B5FF]">
-              {t("moon.etym")}
-            </p>
-            <p className="mx-auto mt-3 max-w-[34em] text-xl text-[#E6E2FF]">
-              {t("moon.text")}
-            </p>
-            <p className="mx-auto mt-2 max-w-[34em] text-lg text-[#D6D2F5]">
-              {t("moon.tag")}
-            </p>
-            <div className="mt-8">
-              <a href="#purpose" className={`${btn} bg-white text-indigo`}>
-                {t("moon.btn")}
-              </a>
-            </div>
-          </Reveal>
-        </section>
-
-        <section
-          id="purpose"
-          className="overflow-hidden bg-[linear-gradient(135deg,var(--color-mist),var(--background))] py-24"
-        >
-          <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-[1.2fr_.8fr]">
-            <Reveal className="min-w-0">
-              {logo("block h-14 w-auto dark:hidden")}
-              {logo(
-                "hidden h-14 w-auto brightness-0 invert opacity-90 dark:block",
-                true,
-              )}
-              <p className={`mt-8 ${kick}`}>{t("pur.kicker")}</p>
-              <h2 className={`mt-3 ${h2}`}>{t("pur.title")}</h2>
-              <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xl font-semibold text-accent">
-                <span>{t("pur.luna")}</span>
-                <span aria-hidden="true" className="h-7 w-px bg-line" />
-                <span>{t("pur.era")}</span>
-              </div>
-              <p className="mt-6 max-w-[36em] text-lg leading-relaxed text-muted">
-                {t("pur.p1")}
-              </p>
-              <p className="mt-4 max-w-[36em] text-lg leading-relaxed text-muted">
-                {t("pur.p2")}
-              </p>
-              <p className="mt-8 text-[clamp(22px,3vw,34px)] font-semibold leading-tight tracking-tight">
-                {t("moon.tag")}
-              </p>
-            </Reveal>
-            <Reveal delay={150}>
-              <div
-                className="flex items-center justify-center gap-3 md:flex-col md:gap-5"
-                aria-hidden="true"
-              >
-                {[0.1, 0.3, 0.5, 0.75, 1].map((p) => (
-                  <Moon
-                    key={p}
-                    phase={p}
-                    className="h-12 w-12 sm:h-16 sm:w-16 md:h-[76px] md:w-[76px]"
-                  />
-                ))}
-              </div>
-            </Reveal>
           </div>
         </section>
 
