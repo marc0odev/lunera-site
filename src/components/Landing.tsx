@@ -8,7 +8,7 @@ import { REFERENCES, SCIENCE_CARDS } from "@/data/science";
 import LanguageSwitcher from "./LanguageSwitcher";
 import ThemeToggle from "./ThemeToggle";
 import Reveal from "./Reveal";
-import { Icon, Moon, PatchBox, Phone, Photo } from "./Art";
+import { Icon, Moon, Phone, Photo } from "./Art";
 
 const btn =
   "inline-flex items-center justify-center rounded-full px-7 py-3.5 text-base font-semibold transition hover:opacity-90 active:scale-[.98]";
@@ -234,7 +234,14 @@ export default function Landing() {
           <Reveal delay={320}>
             <div className="mx-auto mt-12 grid max-w-[1040px] items-end gap-8 px-6 pb-6 md:grid-cols-[1fr_minmax(0,440px)_1fr]">
               <div className="order-2 md:order-1">
-                <PatchBox className="mx-auto w-[170px] drop-shadow-[0_18px_20px_rgba(63,57,155,.28)] sm:w-[190px]" />
+                <Image
+                  src="/box-open.webp"
+                  alt={t("hero.box")}
+                  width={1200}
+                  height={1177}
+                  sizes="240px"
+                  className="mx-auto h-auto w-[200px] drop-shadow-[0_24px_28px_rgba(31,27,99,.45)] sm:w-[240px]"
+                />
                 <p className="mx-auto mt-3 max-w-[16em] text-[13px] font-medium leading-snug">
                   {t("hero.box")}
                 </p>
@@ -574,7 +581,7 @@ export default function Landing() {
                       <Photo
                         name={n}
                         alt={t(`photo.${n}`)}
-                        pos={n === "back" ? "50% 35%" : "50% 55%"}
+                        pos={n === "back" ? "50% 50%" : "50% 60%"}
                         className="aspect-[4/3] w-full rounded-[28px]"
                       />
                       <p className="mt-3 text-[15px] font-medium">
