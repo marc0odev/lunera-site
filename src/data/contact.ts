@@ -1,10 +1,10 @@
 export const CONTACT = {
-  name: "Ana Claudia",
+  name: "Ana Claudia Campana",
   org: "Lunera Healthcare",
   email: "ana.claudia@primaconsult.com.br",
   phone: "+5511984334867",
 };
-export const CONTACT_PHONE_LABEL = "+55 11 98433-4867"; // como aparece escrito na página
+export const CONTACT_PHONE_LABEL = "+55 11 98433-4867";
 
 export const SURVEY = {
   br: "https://docs.google.com/forms/d/e/1FAIpQLSeB8TyFAEdF6p8gIoF4ogMwFx8kUbfTcfNCmobzxKOLFjVpkA/viewform",
