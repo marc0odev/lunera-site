@@ -26,7 +26,7 @@ def seed():
     for d in range(1, 9):
         rec[f"{d}|wake"] = {"scores": {"sleep": [3, 4, 3, 3, 2, 3, 2, 2][d - 1]}, "events": {}, "sleepQuality": [2, 1, 2, 3, 3, 2, 4, 3][d - 1], "sleepHours": [5, 5, 6, 6, 7, 6, 7, 7][d - 1], "energy": "", "ids": ["sleep"], "planVersion": 1}
         rec[f"{d}|bed"] = {"scores": {"hotFlashes": [3, 3, 4, 2, 3, 2, 2, 1][d - 1], "memory": [2, 3, 2, 2, 1, 2, 1, 1][d - 1]}, "events": {"hotFlashes": [6, 7, 8, 5, 6, 4, 4, 3][d - 1]}, "sleepQuality": "", "sleepHours": "", "energy": [2, 2, 3, 3, 3, 4, 3, 4][d - 1], "ids": ["hotFlashes", "memory"], "planVersion": 1}
-    return {"profile": {"name": "Marina", "age": "49", "skin": 2, "hair": 1, "hairLength": "medium", "eyes": 1, "glasses": False, "tone": 1},
+    return {"profile": {"name": "Marina", "age": "49", "skin": 2, "hair": 1, "hairLength": "medium", "eyes": 1, "glasses": False, "tone": 1, "body": "a"},
             "plan": {"days": 14, "symptoms": ["sleep", "hotFlashes", "memory"], "custom": "", "mode": "both", "times": {"wake": "07:00", "bed": "22:00", "morning": "08:00", "afternoon": "15:00", "night": "21:00"}, "assign": {}, "channel": "calendar", "startDate": start, "version": 1},
             "records": rec, "consult": {"priorities": ["hotFlashes"], "question": "", "notes": "", "includeIntimate": False, "includeFreeText": False},
             "patch": {"synced": True, "at": 1794300000000, "placement": "upperChest"}, "flags": {"placed": True, "shared": None}, "demoOffset": 0}

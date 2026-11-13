@@ -3,11 +3,19 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useLang } from "@/i18n/LanguageProvider";
 import { QRCodeSVG } from "qrcode.react";
-import { CONTACT, CONTACT_PHONE_LABEL, SURVEY, vcard } from "@/data/contact";
+import {
+  CONTACT,
+  CONTACT_PHONE_LABEL,
+  SURVEY,
+  VIDEO_URL,
+  vcard,
+} from "@/data/contact";
 import { REFERENCES, SCIENCE_CARDS } from "@/data/science";
 import LanguageSwitcher from "./LanguageSwitcher";
 import ThemeToggle from "./ThemeToggle";
 import Reveal from "./Reveal";
+import HeroArt from "./HeroArt";
+import DownloadButton from "./DownloadButton";
 import { Icon, Moon, Phone, Photo } from "./Art";
 
 const btn =
@@ -85,7 +93,7 @@ export default function Landing() {
     />
   );
   // Menu
-  const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT.email)}&su=${encodeURIComponent(`Lunera · ${t("con.kicker")}`)}`;
+  const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT.email)}&su=${encodeURIComponent("Lunera Healthcare")}`;
   const nav = [
     ["about", "nav.about"],
     ["top", "nav.context"],
@@ -192,35 +200,45 @@ export default function Landing() {
       </header>
 
       <main id="top" className="[&_section]:scroll-mt-24">
-        {/* Introdução */}
-        <section className="relative overflow-hidden bg-[radial-gradient(70%_50%_at_50%_30%,var(--halo),transparent_72%)] pt-28 text-center sm:pt-40">
-          <div className="mx-auto max-w-4xl px-5 sm:px-6">
+        {/* Introdução: palco escuro com a imagem da Lunera (igual nos dois temas, para a imagem funcionar no claro e no escuro) */}
+        <section className="relative overflow-hidden pt-20 text-center sm:pt-28">
+          <div className="mx-3 overflow-hidden rounded-[32px] bg-[radial-gradient(90%_60%_at_50%_0%,#2A2470,#0E1231_70%)] text-white sm:mx-6 sm:rounded-[44px] xl:mx-auto xl:max-w-[1320px]">
+            <div className="relative z-10 mx-auto max-w-4xl px-5 pt-12 sm:px-6 sm:pt-20">
+              <Reveal>
+                <p className="text-[13px] font-bold uppercase tracking-[0.16em] text-[#C3B5FF]">
+                  {t("hero.sig")}
+                </p>
+              </Reveal>
+              <Reveal delay={100}>
+                <h1 className="mt-5 text-balance text-[clamp(26px,7.2vw,56px)] font-semibold leading-[1.12] tracking-[-0.025em] sm:text-[clamp(30px,4.8vw,56px)]">
+                  {t("hero.title")}
+                </h1>
+              </Reveal>
+            </div>
+            <Reveal
+              delay={200}
+              className="mx-auto -mt-2 max-w-[1180px] sm:-mt-14 lg:-mt-28"
+            >
+              <HeroArt alt={t("hero.art")} />
+            </Reveal>
+          </div>
+          <div className="mx-auto max-w-4xl px-5 pt-12 sm:px-6 sm:pt-16">
             <Reveal>
-              <p className={kick}>{t("hero.sig")}</p>
-            </Reveal>
-            <Reveal delay={100}>
-              <h1 className="mt-5 text-balance text-[clamp(26px,7.2vw,56px)] font-semibold leading-[1.12] tracking-[-0.025em] sm:text-[clamp(30px,4.8vw,56px)]">
-                {t("hero.title")}
-              </h1>
-            </Reveal>
-            <Reveal delay={180}>
-              <p className="mx-auto mt-6 max-w-[38em] text-[clamp(17px,2vw,21px)] leading-relaxed text-muted">
+              <p className="mx-auto max-w-[38em] text-[clamp(17px,2vw,21px)] leading-relaxed text-muted">
                 {t("hero.lead")}
               </p>
               <p className="mx-auto mt-3 max-w-[38em] text-base leading-relaxed text-muted">
                 {t("hero.lead2")}
               </p>
             </Reveal>
-            <Reveal delay={260}>
+            <Reveal delay={120}>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
-                <a href="#contact" className={primary}>
-                  {t("cta.short")}
-                </a>
+                <DownloadButton className={primary} />
                 <a
-                  href="#journey"
+                  href="#demo"
                   className="text-base font-semibold text-accent hover:underline"
                 >
-                  {t("hero.link")} ›
+                  {t("demo.link")} ›
                 </a>
               </div>
               <p
@@ -816,106 +834,167 @@ export default function Landing() {
           </div>
         </section>
 
-        {/* Nossa próxima conversa */}
-        <section id="contact" className="py-24">
+        {/* Veja o app em funcionamento: atalho para o vídeo (como os QR da pesquisa) */}
+        <section id="demo" className="py-24">
           <div className="mx-auto max-w-5xl px-6">
             <Reveal>
-              <div className="rounded-[40px] bg-[linear-gradient(135deg,#1B1763,#3F399B)] p-9 text-white sm:p-14">
-                <p className="text-[13px] font-bold uppercase tracking-[0.16em] text-[#C3B5FF]">
-                  {t("con.kicker")}
-                </p>
-                <h2 className="mt-4 max-w-[22em] text-[clamp(26px,3.8vw,44px)] font-semibold leading-[1.12] tracking-[-0.02em]">
-                  {t("con.title")}
-                </h2>
-                <div className="mt-6 grid max-w-3xl gap-4 text-[17px] leading-relaxed text-[#E6E2FF]">
-                  <p>{t("con.p1")}</p>
-                  <p>{t("con.p2")}</p>
-                  <p>{t("con.p3")}</p>
-                  <p>{t("con.p4")}</p>
-                </div>
-                <div className="mt-9 flex flex-wrap items-center gap-8">
-                  <div>
-                    {CONTACT.email ? (
+              <div className="grid items-center gap-10 rounded-[40px] bg-[linear-gradient(135deg,#1B1763,#3F399B)] p-9 text-white sm:p-14 md:grid-cols-[1fr_auto]">
+                <div>
+                  <p className="text-[13px] font-bold uppercase tracking-[0.16em] text-[#C3B5FF]">
+                    {t("demo.kicker")}
+                  </p>
+                  <h2 className="mt-4 max-w-[18em] text-[clamp(26px,3.8vw,44px)] font-semibold leading-[1.12] tracking-[-0.02em]">
+                    {t("demo.title")}
+                  </h2>
+                  <p className="mt-5 max-w-[34em] text-[17px] leading-relaxed text-[#E6E2FF]">
+                    {t("demo.sub")}
+                  </p>
+                  <div className="mt-8 flex flex-wrap items-center gap-4">
+                    {VIDEO_URL ? (
                       <a
-                        href={gmail}
+                        href={VIDEO_URL}
                         target="_blank"
                         rel="noreferrer"
                         className={`${btn} bg-white text-indigo`}
                       >
-                        {t("con.cta")} →
+                        <svg
+                          viewBox="0 0 24 24"
+                          width="18"
+                          height="18"
+                          aria-hidden="true"
+                          className="mr-2"
+                          fill="currentColor"
+                        >
+                          <path d="M8 5.5v13l11-6.5z" />
+                        </svg>
+                        {t("demo.watch")}
                       </a>
                     ) : (
-                      <p className="text-xl font-semibold">{t("con.cta")}</p>
+                      <span className="rounded-full border border-dashed border-white/40 px-6 py-3 text-[15px] text-[#D6D2F5]">
+                        {t("demo.soon")}
+                      </span>
                     )}
-                    {(CONTACT.email || CONTACT.phone) && (
-                      <dl className="mt-5 space-y-1 text-[15px] text-[#D6D2F5]">
-                        {CONTACT.email && (
-                          <div>
-                            <dt className="inline font-semibold">
-                              {t("con.email")}:{" "}
-                            </dt>
-                            <dd className="inline">{CONTACT.email}</dd>
-                          </div>
-                        )}
-                        {CONTACT.phone && (
-                          <div>
-                            <dt className="inline font-semibold">
-                              {t("con.phone")}:{" "}
-                            </dt>
-                            <dd className="inline">{CONTACT_PHONE_LABEL}</dd>
-                          </div>
-                        )}
-                      </dl>
-                    )}
-                    <p className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-[15px] font-semibold">
-                      <a
-                        href={`data:text/vcard;charset=utf-8,${encodeURIComponent(vcard(CONTACT))}`}
-                        download="lunera-contato.vcf"
-                        className="underline decoration-white/40 underline-offset-4 hover:decoration-white"
-                      >
-                        {t("con.save")}
-                      </a>
-                      {CONTACT.email && (
-                        <a
-                          href={`mailto:${CONTACT.email}`}
-                          className="underline decoration-white/40 underline-offset-4 hover:decoration-white"
-                        >
-                          {t("con.mailapp")}
-                        </a>
-                      )}
-                    </p>
+                    <DownloadButton
+                      className={`${btn} border border-white/50 text-white hover:bg-white/10`}
+                    />
                   </div>
-                  {(CONTACT.email || CONTACT.phone) && (
-                    <figure className="text-center">
+                </div>
+                <figure className="flex flex-col items-center">
+                  {VIDEO_URL ? (
+                    <a
+                      href={VIDEO_URL}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={t("demo.watch")}
+                    >
                       <QRCodeSVG
-                        value={vcard(CONTACT)}
-                        size={132}
+                        value={VIDEO_URL}
+                        size={160}
                         marginSize={2}
                         bgColor="#FFFFFF"
                         fgColor="#1B1763"
                         className="rounded-2xl"
                       />
-                      <figcaption className="mt-2 max-w-[12em] text-xs text-[#D6D2F5]">
-                        {t("con.qr")}
-                      </figcaption>
-                    </figure>
+                    </a>
+                  ) : (
+                    <div className="grid h-[160px] w-[160px] place-items-center rounded-2xl border-2 border-dashed border-white/40 p-3 text-center text-xs text-[#D6D2F5]">
+                      {t("demo.soon")}
+                    </div>
                   )}
-                </div>
+                  <figcaption className="mt-3 max-w-[12em] text-center text-xs text-[#D6D2F5]">
+                    {t("demo.qr")}
+                  </figcaption>
+                </figure>
               </div>
             </Reveal>
           </div>
         </section>
       </main>
 
-      <footer className="bg-[#07061F] py-12 text-sm text-[#B9B5E6]">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-6 px-6">
+      <footer
+        id="contact"
+        className="scroll-mt-24 bg-[#07061F] py-14 text-sm text-[#B9B5E6]"
+      >
+        <div className="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-[1fr_auto] md:items-end">
           <div className="space-y-3">
             {logo("block h-14 w-auto brightness-0 invert opacity-90", true)}
+            <p className="text-base font-medium text-[#D6D2F5]">
+              {t("hero.sig")}
+            </p>
             <p>{t("footer.copy")}</p>
           </div>
-          <span className="text-base font-medium text-[#D6D2F5]">
-            {t("hero.sig")}
-          </span>
+          {(CONTACT.email || CONTACT.phone) && (
+            <div className="flex flex-wrap items-center gap-6">
+              <div>
+                <p className="text-[13px] font-bold uppercase tracking-[0.16em] text-[#C3B5FF]">
+                  {t("foot.talk")}
+                </p>
+                <p className="mt-2 text-base font-semibold text-white">
+                  {CONTACT.name} · {CONTACT.org}
+                </p>
+                <dl className="mt-2 space-y-1 text-[15px] text-[#D6D2F5]">
+                  {CONTACT.email && (
+                    <div>
+                      <dt className="sr-only">{t("con.email")}</dt>
+                      <dd>
+                        <a
+                          href={gmail}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="underline decoration-white/30 underline-offset-4 hover:decoration-white"
+                        >
+                          {CONTACT.email}
+                        </a>
+                      </dd>
+                    </div>
+                  )}
+                  {CONTACT.phone && (
+                    <div>
+                      <dt className="sr-only">{t("con.phone")}</dt>
+                      <dd>
+                        <a
+                          href={`tel:${CONTACT.phone}`}
+                          className="underline decoration-white/30 underline-offset-4 hover:decoration-white"
+                        >
+                          {CONTACT_PHONE_LABEL}
+                        </a>
+                      </dd>
+                    </div>
+                  )}
+                </dl>
+                <p className="mt-3 flex flex-wrap gap-x-5 gap-y-2 font-semibold text-[#D6D2F5]">
+                  <a
+                    href={`data:text/vcard;charset=utf-8,${encodeURIComponent(vcard(CONTACT))}`}
+                    download="lunera-contato.vcf"
+                    className="underline decoration-white/30 underline-offset-4 hover:decoration-white"
+                  >
+                    {t("con.save")}
+                  </a>
+                  {CONTACT.email && (
+                    <a
+                      href={`mailto:${CONTACT.email}`}
+                      className="underline decoration-white/30 underline-offset-4 hover:decoration-white"
+                    >
+                      {t("con.mailapp")}
+                    </a>
+                  )}
+                </p>
+              </div>
+              <figure className="text-center">
+                <QRCodeSVG
+                  value={vcard(CONTACT)}
+                  size={112}
+                  marginSize={2}
+                  bgColor="#FFFFFF"
+                  fgColor="#1B1763"
+                  className="rounded-xl"
+                />
+                <figcaption className="mt-2 max-w-[10em] text-xs">
+                  {t("con.qr")}
+                </figcaption>
+              </figure>
+            </div>
+          )}
         </div>
       </footer>
     </>

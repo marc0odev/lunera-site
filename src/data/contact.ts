@@ -28,3 +28,14 @@ export const vcard = (c: typeof CONTACT) =>
   ]
     .filter(Boolean)
     .join("\n");
+
+// Links do app e do vídeo. Enquanto estiverem vazios, o site mostra "link em breve" no lugar do QR/botão.
+// APP.web: a versão web do protótipo (abre em qualquer celular ou computador e pode ser instalada pelo navegador).
+//   Se o app for publicado dentro deste site (pasta public/app), use "/app/index.html".
+// APP.apk: o instalador Android (ex.: https://github.com/<usuario>/<repo>/releases/latest/download/lunera.apk).
+// VIDEO_URL: o vídeo de demonstração no YouTube.
+export const APP = {
+  web: "/app/index.html",
+  apk: "",
+};
+export const VIDEO_URL = "";

@@ -35,3 +35,10 @@ Animações: entrada no scroll (`Reveal.tsx`), header que fica translúcido ao r
 - `public/photos/`: fotos conceituais dos três locais do patch (esterno superior, abaixo do peito, parte superior das costas). Sempre acompanhadas de "Imagem conceitual, localização ainda sujeita à validação".
 - A caixa com um patch continua ilustrativa (`PatchBox`), como a Ana pediu.
 - Contato: o botão abre a escrita no Gmail; "Salvar contato (.vcf)" baixa o mesmo cartão do QR code; "Abrir no meu app de e-mail" mantém o `mailto:`.
+
+## Download do app e vídeo (12/11)
+
+- O botão "Baixar o app" abre uma janela com Android, iPhone e computador. Ela abre a versão web do app, que fica neste mesmo site em `public/app` (gerada com `EXPO_BASE_URL=/app npx expo export --platform web` na pasta do app). Pelo navegador ela pode ser instalada com ícone, em qualquer aparelho.
+- Para oferecer o instalador Android, preencha `APP.apk` em `src/data/contact.ts` com o link do `.apk` (ex.: GitHub Releases). Enquanto estiver vazio, o Android usa a versão web.
+- Quando o vídeo estiver no YouTube, cole o link em `VIDEO_URL` (mesmo arquivo). O botão e o QR code da seção "Veja na prática" passam a funcionar sozinhos.
+- O contato da Ana fica no rodapé; a seção de busca por cofundador saiu do site.
