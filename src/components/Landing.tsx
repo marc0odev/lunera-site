@@ -200,12 +200,12 @@ export default function Landing() {
       </header>
 
       <main id="top" className="[&_section]:scroll-mt-24">
-        {/* Introdução: palco escuro com a imagem da Lunera (igual nos dois temas, para a imagem funcionar no claro e no escuro) */}
+        {/* Introdução: a imagem da Lunera sem fundo, numa versão para o tema claro e outra para o escuro */}
         <section className="relative overflow-hidden pt-20 text-center sm:pt-28">
-          <div className="mx-3 overflow-hidden rounded-[32px] bg-[radial-gradient(90%_60%_at_50%_0%,#2A2470,#0E1231_70%)] text-white sm:mx-6 sm:rounded-[44px] xl:mx-auto xl:max-w-[1320px]">
-            <div className="relative z-10 mx-auto max-w-4xl px-5 pt-12 sm:px-6 sm:pt-20">
+          <div className="mx-auto xl:max-w-[1320px]">
+            <div className="relative z-10 mx-auto max-w-4xl px-5 pt-8 sm:px-6 sm:pt-12">
               <Reveal>
-                <p className="text-[13px] font-bold uppercase tracking-[0.16em] text-[#C3B5FF]">
+                <p className="text-[13px] font-bold uppercase tracking-[0.16em] text-accent">
                   {t("hero.sig")}
                 </p>
               </Reveal>
@@ -217,7 +217,7 @@ export default function Landing() {
             </div>
             <Reveal
               delay={200}
-              className="mx-auto -mt-2 max-w-[1180px] sm:-mt-14 lg:-mt-28"
+              className="mx-auto -mt-2 -mb-8 max-w-[1180px] sm:-mt-14 sm:-mb-14 lg:-mt-28"
             >
               <HeroArt alt={t("hero.art")} />
             </Reveal>

@@ -2,8 +2,6 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-// Imagem da abertura (mulher e sua "gêmea" digital). Entra com o mesmo movimento das telas do site
-// e anda um pouco mais devagar que a página ao rolar (parallax leve). Respeita "reduzir movimento".
 export default function HeroArt({ alt }: { alt: string }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -27,15 +25,27 @@ export default function HeroArt({ alt }: { alt: string }) {
   }, []);
   return (
     <div ref={ref} className="will-change-transform">
+      {/* Versão clara: brilhos recoloridos nos tons da marca. Versão escura: brilho original. */}
       <Image
-        src="/photos/hero-twin.webp"
+        src="/photos/hero-twin-light.webp"
         alt={alt}
         width={1672}
         height={941}
         priority
         sizes="(max-width: 1320px) 100vw, 1320px"
         quality={90}
-        className="h-auto w-full [mask-image:linear-gradient(to_bottom,transparent_0%,#000_16%,#000_84%,transparent_100%)]"
+        className="block h-auto w-full dark:hidden"
+      />
+      <Image
+        src="/photos/hero-twin-dark.webp"
+        alt=""
+        aria-hidden="true"
+        width={1672}
+        height={941}
+        priority
+        sizes="(max-width: 1320px) 100vw, 1320px"
+        quality={90}
+        className="hidden h-auto w-full dark:block"
       />
     </div>
   );
