@@ -200,57 +200,81 @@ export default function Landing() {
       </header>
 
       <main id="top" className="[&_section]:scroll-mt-24">
-        {/* Introdução: a imagem da Lunera sem fundo, numa versão para o tema claro e outra para o escuro */}
-        <section className="relative overflow-hidden pt-20 text-center sm:pt-28">
-          <div className="mx-auto xl:max-w-[1320px]">
-            <div className="relative z-10 mx-auto max-w-4xl px-5 pt-8 sm:px-6 sm:pt-12">
+        {/* Abertura (diagramação e textos da Ana, 13/11): título à esquerda, proposta e botões à direita, imagem embaixo */}
+        <section className="relative overflow-hidden pt-24 sm:pt-32">
+          <div className="mx-auto max-w-[1440px] px-6 sm:px-12">
+            <div className="grid gap-x-[70px] gap-y-6 md:grid-cols-2">
               <Reveal>
-                <p className="text-[13px] font-bold uppercase tracking-[0.16em] text-accent">
-                  {t("hero.sig")}
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
+                  {t("ab.eyebrow")}
                 </p>
-              </Reveal>
-              <Reveal delay={100}>
-                <h1 className="mt-5 text-balance text-[clamp(26px,7.2vw,56px)] font-semibold leading-[1.12] tracking-[-0.025em] sm:text-[clamp(30px,4.8vw,56px)]">
-                  {t("hero.title")}
+                <h1 className="mt-5 text-[clamp(37px,8.5vw,54px)] font-semibold leading-[1.08] tracking-[-0.045em] md:text-[clamp(42px,4.2vw,60px)]">
+                  <span className="block">{t("ab.title")}</span>
+                  <span className="block text-accent">{t("ab.accent")}</span>
                 </h1>
               </Reveal>
+              <Reveal delay={120} className="md:pt-9">
+                <p className="max-w-[510px] text-base leading-[1.65] text-muted sm:text-[17px]">
+                  {t("ab.desc")}
+                </p>
+                <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-4">
+                  <DownloadButton className={primary} />
+                  <a
+                    href="#demo"
+                    className="border-b border-line pb-1 text-sm font-medium text-foreground hover:border-accent hover:text-accent"
+                  >
+                    {t("ab.secondary")}
+                  </a>
+                </div>
+                <p className="mt-4 text-[11px] text-muted" role="note">
+                  {t("ab.stage")}
+                </p>
+              </Reveal>
             </div>
-            <Reveal
-              delay={200}
-              className="mx-auto -mt-2 -mb-8 max-w-[1180px] sm:-mt-14 sm:-mb-14 lg:-mt-28"
-            >
-              <HeroArt alt={t("hero.art")} />
+            <Reveal delay={200}>
+              <figure className="relative mt-8 text-center">
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse,var(--color-mist)_0%,transparent_72%)]"
+                />
+                <div className="-mx-6 aspect-[1672/650] overflow-hidden sm:mx-0 md:aspect-[1672/560]">
+                  <div className="-translate-y-[16%] md:-translate-y-[21%]">
+                    <HeroArt alt={t("hero.art")} />
+                  </div>
+                </div>
+                <figcaption className="mt-1 text-[10px] tracking-[0.015em] text-muted">
+                  {t("ab.caption")}
+                </figcaption>
+              </figure>
             </Reveal>
-          </div>
-          <div className="mx-auto max-w-4xl px-5 pt-12 sm:px-6 sm:pt-16">
             <Reveal>
-              <p className="mx-auto max-w-[38em] text-[clamp(17px,2vw,21px)] leading-relaxed text-muted">
-                {t("hero.lead")}
-              </p>
-              <p className="mx-auto mt-3 max-w-[38em] text-base leading-relaxed text-muted">
-                {t("hero.lead2")}
-              </p>
+              <ul className="mt-6 grid border-y border-line py-3 text-xs leading-[1.6] text-muted md:grid-cols-3 md:py-6">
+                {[1, 2, 3].map((n) => (
+                  <li
+                    key={n}
+                    className="border-line py-4 md:px-6 md:py-0 [&+li]:border-t md:[&+li]:border-l md:[&+li]:border-t-0"
+                  >
+                    <strong className="mb-1 block text-[13px] font-semibold text-foreground">
+                      {t(`ab.r${n}`)}
+                    </strong>
+                    {t(`ab.d${n}`)}
+                  </li>
+                ))}
+              </ul>
             </Reveal>
-            <Reveal delay={120}>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
-                <DownloadButton className={primary} />
-                <a
-                  href="#demo"
-                  className="text-base font-semibold text-accent hover:underline"
-                >
-                  {t("demo.link")} ›
-                </a>
+            <Reveal>
+              <div className="mx-auto flex max-w-[1050px] flex-col justify-between gap-6 px-0 py-12 md:flex-row md:items-center md:gap-12 md:px-8 md:py-16">
+                <h2 className="max-w-[540px] text-[25px] font-medium leading-[1.3] tracking-[-0.025em] md:text-[28px]">
+                  {t("ab.nextTitle")}
+                </h2>
+                <p className="max-w-[360px] text-sm leading-[1.8] text-muted">
+                  {t("ab.nextText")}
+                </p>
               </div>
-              <p
-                className="mx-auto mt-5 max-w-[40em] text-[13px] leading-relaxed text-muted"
-                role="note"
-              >
-                {t("hero.note")}
-              </p>
             </Reveal>
           </div>
           <Reveal delay={320}>
-            <div className="mx-auto mt-12 grid max-w-[1040px] items-end gap-8 px-6 pb-6 md:grid-cols-[1fr_minmax(0,440px)_1fr]">
+            <div className="mx-auto mt-12 grid max-w-[1040px] items-end text-center gap-8 px-6 pb-6 md:grid-cols-[1fr_minmax(0,440px)_1fr]">
               <div className="order-2 md:order-1">
                 <Image
                   src="/box-open.webp"
@@ -288,7 +312,9 @@ export default function Landing() {
                 </p>
               </div>
             </div>
-            <p className="px-6 pb-14 text-xs text-muted">{t("concept")}</p>
+            <p className="px-6 pb-14 text-center text-xs text-muted">
+              {t("concept")}
+            </p>
           </Reveal>
         </section>
 

@@ -2,6 +2,8 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
+// Imagem da abertura (mulher e sua "gêmea" digital), sem fundo: se encaixa no tema claro e no escuro. Entra com o mesmo movimento das telas do site
+// e anda um pouco mais devagar que a página ao rolar (parallax leve). Respeita "reduzir movimento".
 export default function HeroArt({ alt }: { alt: string }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -25,27 +27,16 @@ export default function HeroArt({ alt }: { alt: string }) {
   }, []);
   return (
     <div ref={ref} className="will-change-transform">
-      {/* Versão clara: brilhos recoloridos nos tons da marca. Versão escura: brilho original. */}
+      {/* A mesma arte nos dois temas (traço violeta da marca), como na proposta da Ana */}
       <Image
         src="/photos/hero-twin-light.webp"
         alt={alt}
         width={1672}
         height={941}
         priority
-        sizes="(max-width: 1320px) 100vw, 1320px"
+        sizes="(max-width: 1440px) 100vw, 1440px"
         quality={90}
-        className="block h-auto w-full dark:hidden"
-      />
-      <Image
-        src="/photos/hero-twin-dark.webp"
-        alt=""
-        aria-hidden="true"
-        width={1672}
-        height={941}
-        priority
-        sizes="(max-width: 1320px) 100vw, 1320px"
-        quality={90}
-        className="hidden h-auto w-full dark:block"
+        className="block h-auto w-full"
       />
     </div>
   );
